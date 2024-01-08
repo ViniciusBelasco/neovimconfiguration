@@ -1,4 +1,5 @@
 local keymap = vim.keymap
+local api = vim.api
 
 -- Directory Navigation
 keymap.set('n', '<leader>tf', ':NvimTreeFocus<CR>', { noremap = true, silent = true })
@@ -18,3 +19,15 @@ keymap.set('n', '<leader>sm', ':MaximizerToggle<CR>', opts) -- Toggle Minimiza
 
 -- Save files
 keymap.set('n', '<leader>w', ':w<CR>', opts) -- Toggle Minimiza
+keymap.set('n', '<leader>q', ':q<CR>', opts) -- Toggle Minimiza
+
+-- Source lua files
+keymap.set('n', '<leader><leader>', ':so<CR>', opts) -- Toggle Minimiza
+
+-- Indenting
+keymap.set("v","<", "<gv")
+keymap.set("v",">", ">gv")
+
+-- Comments
+api.nvim_set_keymap( 'n', "<C-_>", "gcc", { noremap = false } )
+api.nvim_set_keymap( 'v', "<C-_>", "gcc", { noremap = false } )
