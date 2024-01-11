@@ -4,6 +4,7 @@ local icons = require("util.icons").diagnostic_signs
 local config = function()
 	require("neoconf").setup({})
 
+	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 	local lspconfig = require("lspconfig")
 
 	for type, icon in pairs(icons) do
@@ -13,7 +14,7 @@ local config = function()
 
 	-- lua
 	lspconfig.lua_ls.setup({
-		-- capabilities = capabilities,
+		capabilities = capabilities,
 		on_attach = on_attach,
 		settings = {
 			lua = { -- custom settings for lua
@@ -33,8 +34,8 @@ local config = function()
 	})
 
 	-- Python
-	lspconfig.python.setup({
-		-- capabilities = capabilities
+	lspconfig.pyright.setup({
+		capabilities = capabilities,
 		on_attach = on_attach,
 		settings = {
 			pyright = {
@@ -49,15 +50,27 @@ local config = function()
 		},
 	})
 
+	lspconfig.tsserver.setup({
+		on_attach = on_attach,
+		capabilities = capabilities,
+		filetypes = {
+			"typescript",
+		},
+		root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
+	})
+
 	local luacheck = require("efmls-configs.linters.luacheck")
 	local stylua = require("efmls-configs.formatters.stylua")
 	local flake8 = require("efmls-configs.linters.flake8")
 	local black = require("efmls-configs.formatters.black")
+	local eslint_d = require("efmls-configs.linters.eslint_d")
+	local prettierd = require("efmls-configs.formatters.prettierd")
 
 	lspconfig.efm.setup({
 		filetypes = {
 			"lua",
 			"python",
+			"typescript",
 		},
 		init_options = {
 			documentFormatting = true,
@@ -71,24 +84,11 @@ local config = function()
 			languages = {
 				lua = { luacheck, stylua },
 				python = { flake8, black },
+				typescript = { eslint_d, prettierd },
 			},
 		},
 	})
 
-	-- Format on Save
-	local lsp_fmt_group = vim.api.nvim_create_augroup("LspFormattingsGroup", {})
-	vim.api.nvim_create_autocmd("BufWritePost", {
-		group = lsp_fmt_group,
-		callback = function()
-			local efm = vim.lsp.get_active_clients({ name = "efm" })
-
-			if vim.tbl_isempty(efm) then
-				return
-			end
-
-			vim.lsp.buf.format({ name = "efm" })
-		end,
-	})
 end
 
 return {
