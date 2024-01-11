@@ -1,33 +1,51 @@
-local keymap = vim.keymap
+local mapkey = require("util.keymapper").mapvimkey
 local api = vim.api
 
 -- Directory Navigation
-keymap.set('n', '<leader>tf', ':NvimTreeFocus<CR>', { noremap = true, silent = true })
-keymap.set('n', '<leader>tt', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-
--- Pane Navigation
-keymap.set('n', '<C-h>', '<C-w>h', opts) -- Navigate Left
-keymap.set('n', '<C-j>', '<C-w>j', opts) -- Navigate Left
-keymap.set('n', '<C-k>', '<C-w>k', opts) -- Navigate Left
-keymap.set('n', '<C-l>', '<C-w>l', opts) -- Navigate Left
+mapkey("n", "<leader>tf", "NvimTreeFocus", { noremap = true, silent = true })
+mapkey("n", "<leader>tt", "NvimTreeToggle", { noremap = true, silent = true })
 
 -- Window Management
-keymap.set('n', '<leader>sv', ':vsplit<CR>', opts) -- Vertical Split
-keymap.set('n', '<leader>sh', ':split<CR>', opts) -- Horizontal Split
+mapkey("n", "<leader>sv", "vsplit") -- Vertical Split
+mapkey("n", "<leader>sh", "split") -- Horizontal Split
+mapkey("n", "<C-Up>", "resize +2" )
+mapkey("n", "<C-Down>", "resize -2" )
+mapkey("n", "<C-Left>", "Vertical resize -2" )
+mapkey("n", "<C-Right>", "Vertical resize -2" )
+
+-- Show Full File-Path
+mapkey( "n", "<leader>pa", "echo expand('%:p')" ) -- Show Full File Path
+
 -- Don't know what it do yet
-keymap.set('n', '<leader>sm', ':MaximizerToggle<CR>', opts) -- Toggle Minimiza 
+mapkey("n", "<leader>sm", "MaximizerToggle") -- Toggle Minimiza
 
 -- Save files
-keymap.set('n', '<leader>w', ':w<CR>', opts) -- Toggle Minimiza
-keymap.set('n', '<leader>q', ':q<CR>', opts) -- Toggle Minimiza
+mapkey("n", "<leader>w", "w") -- Toggle Minimiza
+mapkey("n", "<leader>q", "q") -- Toggle Minimiza
 
 -- Source lua files
-keymap.set('n', '<leader><leader>', ':so<CR>', opts) -- Toggle Minimiza
+mapkey("n", "<leader><leader>", "so") -- Toggle Minimiza
 
 -- Indenting
-keymap.set("v","<", "<gv")
-keymap.set("v",">", ">gv")
+vim.keymap.set("v", "<", "<gv", { silent = true, noremap = true } )
+vim.keymap.set("v", ">", ">gv", { silent = true, noremap = true } )
+
+-- Move oown and up a selected line.
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+--Append line without moving the cursor.
+vim.keymap.set("n", "J", "mzJ`z")
+
+--Select all page
+vim.keymap.set("n", "<leader>all", ":keepjumps normal! ggVG<cr>")
+
+-- Pane Navigation
+vim.keymap.set("n", "<C-h>", "<C-w>h", {} ) -- Navigate Left
+vim.keymap.set("n", "<C-j>", "<C-w>j", {} ) -- Navigate Down 
+vim.keymap.set("n", "<C-k>", "<C-w>k", {} ) -- Navigate UP 
+vim.keymap.set("n", "<C-l>", "<C-w>l", {} ) -- Navigate Right 
 
 -- Comments
-api.nvim_set_keymap( 'n', "<C-_>", "gcc", { noremap = false } )
-api.nvim_set_keymap( 'v', "<C-_>", "gcc", { noremap = false } )
+api.nvim_set_keymap("n", "<C-_>", "gcc", { noremap = false })
+api.nvim_set_keymap("v", "<C-_>", "gcc", { noremap = false })
