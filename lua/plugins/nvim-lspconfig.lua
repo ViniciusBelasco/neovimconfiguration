@@ -64,7 +64,7 @@ local config = function()
 	local flake8 = require("efmls-configs.linters.flake8")
 	local black = require("efmls-configs.formatters.black")
 	local eslint_d = require("efmls-configs.linters.eslint_d")
-	local prettierd = require("efmls-configs.formatters.prettierd")
+	local prettierd = require("efmls-configs.formatters.prettier_d")
 
 	lspconfig.efm.setup({
 		filetypes = {
