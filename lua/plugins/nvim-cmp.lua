@@ -1,13 +1,12 @@
 return {
 	"hrsh7th/nvim-cmp",
-  lazy = false,
+	lazy = false,
 	config = function()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 		local lspkind = require("lspkind")
 
 		require("luasnip/loaders/from_vscode").lazy_load()
-
 		vim.opt.completeopt = "menu,menuone,noselect"
 
 		cmp.setup({
@@ -28,7 +27,8 @@ return {
 			-- Sources for autocompletion
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" }, -- Lsp
-				{ name = "luasnip" }, -- Snippets
+				{ name = "luasnip" },
+			}, { -- Snippets
 				{ name = "buffer" }, -- Text within current buffer
 				{ name = "path" }, -- file system paths
 			}),
@@ -44,14 +44,16 @@ return {
 
 	dependencies = {
 		"onsails/lspkind.nvim",
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-nvim-lua',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
-    'hrsh7th/cmp-cmdline',
+		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-nvim-lua",
+		"hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-path",
+		"hrsh7th/cmp-cmdline",
+		"saadparwaiz1/cmp_luasnip",
+		"rafamadriz/friendly-snippets",
 		{
 			"L3MON4D3/LuaSnip",
-      version = "2.*",
+			version = "2.*",
 			build = "make install_jsregexp",
 		},
 	},
