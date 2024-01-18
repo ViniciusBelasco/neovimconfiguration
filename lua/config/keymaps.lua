@@ -46,6 +46,10 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", {}) -- Navigate Down
 vim.keymap.set("n", "<C-k>", "<C-w>k", {}) -- Navigate UP
 vim.keymap.set("n", "<C-l>", "<C-w>l", {}) -- Navigate Right
 
+-- Git keymaps
+vim.keymap.set("n", "<leader>gc", vim.cmd.Git, {})
+vim.keymap.set("n", "<leader>gb", ":Git blame<CR>", {})
+
 -- Comments
 api.nvim_set_keymap("n", "<C-_>", "gcc", { noremap = false })
 api.nvim_set_keymap("v", "<C-_>", "gcc", { noremap = false })
