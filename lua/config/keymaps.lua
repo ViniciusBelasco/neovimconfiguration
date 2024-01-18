@@ -1,63 +1,64 @@
-local mapkey = require("util.keymapper").mapvimkey
-local api = vim.api
+local keymaps = vim.keymap.set
+local CR = "<CR>"
+local api = vim.api.nvim_set_keymap
 
 -- Directory Navigation
-mapkey("n", "<leader>tf", "NvimTreeFocus", { noremap = true, silent = true })
-mapkey("n", "<leader>tt", "NvimTreeToggle", { noremap = true, silent = true })
+keymaps("n", "<leader>tf", ":NvimTreeFocus" .. CR, { noremap = true, silent = true })
+keymaps("n", "<leader>tt", ":NvimTreeToggle" .. CR, { noremap = true, silent = true })
 
 -- Window Management
-mapkey("n", "<leader>sv", "vsplit") -- Vertical Split
-mapkey("n", "<leader>sh", "split") -- Horizontal Split
-mapkey("n", "<C-Up>", "resize +2")
-mapkey("n", "<C-Down>", "resize -2")
-mapkey("n", "<C-Left>", "Vertical resize -2")
-mapkey("n", "<C-Right>", "Vertical resize -2")
+keymaps("n", "<leader>sv", ":vsplit" .. CR) -- Vertical Split
+keymaps("n", "<leader>sh", ":split" .. CR) -- Horizontal Split
+keymaps("n", "<C-Up>", ":resize +2" .. CR)
+keymaps("n", "<C-Down>", ":resize -2" .. CR)
+keymaps("n", "<C-Left>", ":Vertical resize -2" .. CR)
+keymaps("n", "<C-Right>", ":Vertical resize -2" .. CR)
 
 -- Show Full File-Path
-mapkey("n", "<leader>pa", "echo expand('%:p')") -- Show Full File Path
+keymaps("n", "<leader>pa", ":echo expand('%:p')" .. CR) -- Show Full File Path
 
 -- Don't know what it do yet
-mapkey("n", "<leader>sm", "MaximizerToggle") -- Toggle Minimiza
+keymaps("n", "<leader>sm", ":MaximizerToggle" .. CR) -- Toggle Minimiza
 
 -- Save files
-mapkey("n", "<leader>w", "w") -- Toggle Minimiza
-mapkey("n", "<leader>q", "q") -- Toggle Minimiza
+keymaps("n", "<leader>w", ":w" .. CR) -- Toggle Minimiza
+keymaps("n", "<leader>q", ":q" .. CR) -- Toggle Minimiza
 
 -- Source lua files
-mapkey("n", "<leader><leader>", "so") -- Toggle Minimiza
+keymaps("n", "<leader><leader>", ":so" .. CR) -- Toggle Minimiza
 
 -- Indenting
-vim.keymap.set("v", "<", "<gv", { silent = true, noremap = true })
-vim.keymap.set("v", ">", ">gv", { silent = true, noremap = true })
+keymaps("v", "<", "<gv", { silent = true, noremap = true })
+keymaps("v", ">", ">gv", { silent = true, noremap = true })
 
 -- Move oown and up a selected line.
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+keymaps("v", "J", ":m '>+1" .. CR .. "gv=gv")
+keymaps("v", "K", ":m '<-2" .. CR .. "gv=gv")
 
 --Append line without moving the cursor.
-vim.keymap.set("n", "J", "mzJ`z")
+keymaps("n", "J", "mzJ`z")
 
 --Select all page
-vim.keymap.set("n", "<leader>all", ":keepjumps normal! ggVG<cr>")
+keymaps("n", "<leader>all", ":keepjumps normal! ggVG" .. CR, {})
 
 -- Pane Navigation
-vim.keymap.set("n", "<C-h>", "<C-w>h", {}) -- Navigate Left
-vim.keymap.set("n", "<C-j>", "<C-w>j", {}) -- Navigate Down
-vim.keymap.set("n", "<C-k>", "<C-w>k", {}) -- Navigate UP
-vim.keymap.set("n", "<C-l>", "<C-w>l", {}) -- Navigate Right
+keymaps("n", "<C-h>", "<C-w>h", {}) -- Navigate Left
+keymaps("n", "<C-j>", "<C-w>j", {}) -- Navigate Down
+keymaps("n", "<C-k>", "<C-w>k", {}) -- Navigate UP
+keymaps("n", "<C-l>", "<C-w>l", {}) -- Navigate Right
 
 -- Git keymaps
-vim.keymap.set("n", "<leader>gc", vim.cmd.Git, {})
-vim.keymap.set("n", "<leader>gb", ":Git blame<CR>", {})
+keymaps("n", "<leader>gc", vim.cmd.Git, {})
+keymaps("n", "<leader>gb", ":Git blame" .. CR, {})
 
 -- Comments
-api.nvim_set_keymap("n", "<C-_>", "gcc", { noremap = false })
-api.nvim_set_keymap("v", "<C-_>", "gcc", { noremap = false })
+api("n", "<C-_>", "gcc", { noremap = false })
+api("v", "<C-_>", "gcc", { noremap = false })
 
 -- Vine finder
 --Search on current word filtering by current file extension
-vim.api.nvim_set_keymap("n", "<C-f>", ":Vine<CR>", {})
-vim.api.nvim_set_keymap("n", "<leader>f", ":call VineSeek('', '.')", {})
+api("n", "<C-f>", ":Vine" .. CR, {})
+api("n", "<leader>f", ":call VineSeek('', '.')", {})
 
 --Open current shown match
-vim.api.nvim_set_keymap("n", "<leader><CR>", ":call VineOpen()<CR>", {})
+api("n", "<leader>" .. CR, ":call VineOpen()" .. CR, {})
