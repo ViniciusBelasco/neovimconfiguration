@@ -57,4 +57,3 @@ vim.api.nvim_set_keymap("n", "<leader>f", ":call VineSeek('', '.')", {})
 
 --Open current shown match
 vim.api.nvim_set_keymap("n", "<leader><CR>", ":call VineOpen()<CR>", {})
-
