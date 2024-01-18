@@ -48,7 +48,7 @@ keymaps("n", "<C-k>", "<C-w>k", {}) -- Navigate UP
 keymaps("n", "<C-l>", "<C-w>l", {}) -- Navigate Right
 
 -- Git keymaps
-keymaps("n", "<leader>gc", vim.cmd.Git, {})
+keymaps("n", "<leader>gc", ":Git" .. CR .. "<C-w>r", {})
 keymaps("n", "<leader>gb", ":Git blame" .. CR, {})
 
 -- Comments
