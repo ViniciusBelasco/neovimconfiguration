@@ -1,6 +1,7 @@
-local keymaps = vim.keymap.set
 local CR = "<CR>"
+local keymaps = vim.keymap.set
 local api = vim.api.nvim_set_keymap
+--local luasnip = require("luasnip")
 
 -- Directory Navigation
 keymaps("n", "<leader>tf", ":NvimTreeFocus" .. CR, { noremap = true, silent = true })
@@ -11,8 +12,8 @@ keymaps("n", "<leader>sv", ":vsplit" .. CR) -- Vertical Split
 keymaps("n", "<leader>sh", ":split" .. CR) -- Horizontal Split
 keymaps("n", "<C-Up>", ":resize +2" .. CR)
 keymaps("n", "<C-Down>", ":resize -2" .. CR)
-keymaps("n", "<C-Left>", ":Vertical resize -2" .. CR)
-keymaps("n", "<C-Right>", ":Vertical resize -2" .. CR)
+keymaps("n", "<C-Left>", ":vertical resize -2" .. CR)
+keymaps("n", "<C-Right>", ":vertical resize +2" .. CR)
 
 -- Show Full File-Path
 keymaps("n", "<leader>pa", ":echo expand('%:p')" .. CR) -- Show Full File Path
@@ -26,6 +27,8 @@ keymaps("n", "<leader>q", ":q" .. CR) -- Toggle Minimiza
 
 -- Source lua files
 keymaps("n", "<leader><leader>", ":so" .. CR) -- Toggle Minimiza
+-- Source snippets file
+keymaps("n", "<leader><leader>s", "<cmd>source ~/.config/nvim/after/plugin/luasnip.lua")
 
 -- Indenting
 keymaps("v", "<", "<gv", { silent = true, noremap = true })
@@ -62,3 +65,11 @@ api("n", "<leader>f", ":call VineSeek('', '.')", {})
 
 --Open current shown match
 api("n", "<leader>" .. CR, ":call VineOpen()" .. CR, {})
+
+-- LuaSnip configuration
+-- This expand the current item or jump to the next item within the snippet
+keymaps({ "i", "s" }, "<C-x>", function()
+	if luasnip.expand_or_jumpable() then
+		luasnip.expand_or_jump()
+	end
+end)
