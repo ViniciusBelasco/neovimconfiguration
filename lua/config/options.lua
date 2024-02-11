@@ -6,7 +6,7 @@ opt.shiftwidth = 2
 opt.softtabstop = 2
 opt.expandtab = true
 opt.smartindent = true
-opt.wrap = false 
+opt.wrap = false
 
 -- Search itens
 opt.incsearch = true
@@ -18,7 +18,7 @@ opt.hlsearch = true
 opt.number = true
 opt.relativenumber = false
 opt.termguicolors = true
-opt.colorcolumn = '72'
+opt.colorcolumn = "72"
 opt.signcolumn = "yes"
 opt.cmdheight = 1
 opt.scrolloff = 10
@@ -26,9 +26,9 @@ opt.completeopt = "menuone,noinsert,noselect"
 
 -- Behavior
 opt.hidden = true
-opt.errorbells = false 
-opt.swapfile = false 
-opt.backup = false 
+opt.errorbells = false
+opt.swapfile = false
+opt.backup = false
 opt.undodir = vim.fn.expand("~/.vim/undodir")
 opt.undofile = true
 opt.backspace = "indent,eol,start"
@@ -40,3 +40,4 @@ opt.mouse:append("a")
 opt.clipboard:append("unnamedplus")
 opt.modifiable = true
 opt.encoding = "UTF-8"
+vim.opt.completeopt = "menu,menuone,noselect"
