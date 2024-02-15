@@ -24,7 +24,7 @@ return {
 		})
 
 		--Key Maps
-		vim.keymap.set({ "i", "s" }, "<a-p>", function()
+		vim.keymap.set({ "i", "s" }, "<S-p>", function()
 			if ls.expand_or_jumpable() then
 				ls.expand()
 			end
