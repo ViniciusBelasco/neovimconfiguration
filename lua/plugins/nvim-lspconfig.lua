@@ -33,6 +33,9 @@ local config = function()
 		},
 	})
 
+	local luacheck = require("efmls-configs.linters.luacheck")
+	local stylua = require("efmls-configs.formatters.stylua")
+
 	-- Python
 	lspconfig.pyright.setup({
 		capabilities = capabilities,
@@ -50,6 +53,10 @@ local config = function()
 		},
 	})
 
+	local flake8 = require("efmls-configs.linters.flake8")
+	local black = require("efmls-configs.formatters.black")
+
+	-- Java Script
 	lspconfig.tsserver.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
@@ -59,10 +66,6 @@ local config = function()
 		root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
 	})
 
-	local luacheck = require("efmls-configs.linters.luacheck")
-	local stylua = require("efmls-configs.formatters.stylua")
-	local flake8 = require("efmls-configs.linters.flake8")
-	local black = require("efmls-configs.formatters.black")
 	local eslint_d = require("efmls-configs.linters.eslint_d")
 	local prettierd = require("efmls-configs.formatters.prettier_d")
 
@@ -88,7 +91,6 @@ local config = function()
 			},
 		},
 	})
-
 end
 
 return {
