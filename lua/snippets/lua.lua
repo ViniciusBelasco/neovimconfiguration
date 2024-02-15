@@ -16,8 +16,13 @@ local snippets, autosnippets = {}, {}
 local group = vim.api.nvim_create_augroup("Lua Snippets", { clear = true })
 local file_pattern = "*.lua"
 
-local separator = s("sep", { t("/*********************************************/") })
+local sep = s("sep", { t("/*********************************************/") })
+local func = s("func", {
+	t("static function "),
+	i(1, "function_name"),
+})
 
-table.insert(snippets, separator)
+table.insert(snippets, sep)
+table.insert(snippets, func)
 
 return snippets, autosnippets
