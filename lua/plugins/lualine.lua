@@ -18,7 +18,6 @@ local config = function()
 
 			ignore_focus = {},
 			always_divide_middle = true,
-			globalstatus = false,
 
 			refresh = {
 				statusline = 1000,
