@@ -27,18 +27,4 @@ return {
 		keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>"),
 		keymap.set("n", "<leader>fb", ":Telescope buffers<CR>"),
 	},
-	{
-		"nvim-telescope/telescope-ui-select.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("telescope").setup({
-				extensions = {
-					["ui-select"] = {
-						require("telescope.themes").get_dropdown({}),
-					},
-				},
-			})
-			require("telescope").load_extension("ui-select")
-		end,
-	},
 }
