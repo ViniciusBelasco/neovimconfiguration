@@ -17,12 +17,40 @@ local group = vim.api.nvim_create_augroup("Lua Snippets", { clear = true })
 local file_pattern = "*.lua"
 
 local sep = s("sep", { t("/*********************************************/") })
-local func = s("func", {
-	t("static function "),
-	i(1, "function_name"),
-})
+local func = s(
+	"func",
+	fmt(
+		[[
+    static function {}({})
+       {}
+    return .t.
+  ]],
+		{
+			i(1, "function_name"),
+			i(2, "parameter"),
+			i(3, "TODO"),
+		}
+	)
+)
+
+local proc = s(
+	"proc",
+	fmt(
+		[[
+  static procedure {}({})
+     {}
+  return
+]],
+		{
+			i(1, "function_name"),
+			i(2, "parameter"),
+			i(3, "TODO"),
+		}
+	)
+)
 
 table.insert(snippets, sep)
 table.insert(snippets, func)
+table.insert(snippets, proc)
 
 return snippets, autosnippets
