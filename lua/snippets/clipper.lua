@@ -23,12 +23,13 @@ local func = s(
 		[[
     static function {}({})
        {}
-    return .t.
+    return {}
   ]],
 		{
 			i(1, "function_name"),
 			i(2, "parameter"),
 			i(3, "TODO"),
+			c(4, { t(""), i(1, ".t."), i(2, ".f."), t("var") }),
 		}
 	)
 )
