@@ -16,7 +16,7 @@ local snippets, autosnippets = {}, {}
 local group = vim.api.nvim_create_augroup("Lua Snippets", { clear = true })
 local file_pattern = "*.lua"
 
-local sep = s("sep", { t("/*********************************************/") })
+local sep = s("sep", { t("/*******************************************************************************/") })
 local func = s(
 	"func",
 	fmt(
@@ -50,8 +50,76 @@ local proc = s(
 	)
 )
 
+local include = s(
+	"inc",
+	fmt(
+		[[
+  #include {}
+]],
+		i(1, "module")
+	)
+)
+
+local delete = s("del", { i(1, "ALIAS"), t(" ->(RL(), DbDelete(), DbCommit(), DbUnLock(), dbSkip() )") })
+
+local foreach = s(
+	"feach",
+	fmt(
+		[[
+    for each {} in {}
+      {}
+    next
+    ]],
+		{
+			i(1, "arr"),
+			i(2, "arrs"),
+			i(3, "do something"),
+		}
+	)
+)
+
+local forloop = s(
+	"for",
+	fmt(
+		[[
+      for {} := 1 to Len({})
+        {}
+      next
+    ]],
+		{
+			i(1, "var"),
+			i(2, "var"),
+			i(3, "do something"),
+		}
+	)
+)
+
+local dowhile = s(
+	"do",
+	fmt(
+		[[
+    do while {}->{} == {} .and. {}->( !EoF() )
+       {}
+       {}->( dbSkip() )
+    enddo
+    ]],
+		{
+			i(1, "ALIAS"),
+			i(2, "field"),
+			i(3, "value"),
+			i(4, "ALIAS"),
+			i(5, "TODO"),
+			i(6, "ALIAS"),
+		}
+	)
+)
+
 table.insert(snippets, sep)
 table.insert(snippets, func)
 table.insert(snippets, proc)
+table.insert(snippets, include)
+table.insert(snippets, delete)
+table.insert(snippets, foreach)
+table.insert(snippets, forloop)
 
 return snippets, autosnippets
