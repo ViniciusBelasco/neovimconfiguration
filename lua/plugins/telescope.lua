@@ -14,6 +14,17 @@ local config = function()
 	})
 end
 
+local uiconfig = function()
+	require("telescope").setup({
+		extensions = {
+			["ui-select"] = {
+				require("telescope.themes").get_dropdown({}),
+			},
+		},
+	})
+	require("telescope").load_extension("ui-select")
+end
+
 return {
 	"nvim-telescope/telescope.nvim",
 	lazy = false,
@@ -26,5 +37,9 @@ return {
 		keymap.set("n", "<leader>fa", ":Telescope <CR>"),
 		keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>"),
 		keymap.set("n", "<leader>fb", ":Telescope buffers<CR>"),
+	},
+	{
+		"nvim-telescope/telescope-ui-select.nvim",
+		config = uiconfig,
 	},
 }
