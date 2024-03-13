@@ -29,6 +29,7 @@ return {
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
 		config = uiconfig,
+		lazy = false,
 	},
 	{
 		"nvim-telescope/telescope.nvim",
@@ -45,4 +46,3 @@ return {
 		},
 	},
 }
-
