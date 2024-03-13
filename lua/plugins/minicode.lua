@@ -2,18 +2,28 @@ local surround = function()
 	require("mini.surround").setup()
 end
 
+local comment = function()
+	require("mini.comment").setup()
+end
+
 return {
 	{
 		"echasnovski/mini.pairs",
 		version = false,
 		lazy = false,
 		opts = {},
-		desc = "Toggle auto pairs",
+		desc = "Auto pairs",
 	},
 	{
 		"echasnovski/mini.surround",
 		lazy = false,
 		version = false,
 		config = surround,
+	},
+	{
+		"echasnovski/mini.comment",
+		version = false,
+		lazy = false,
+		config = comment,
 	},
 }
