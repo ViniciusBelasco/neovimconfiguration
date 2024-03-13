@@ -4,14 +4,15 @@ end
 
 return {
 	{
-		"windwp/nvim-autopairs",
+		"echasnovski/mini.pairs",
+		version = false,
 		lazy = false,
-		event = "InsertEnter",
-		opts = {}, -- this is equalent to setup({}) function
+		opts = {},
+		desc = "Toggle auto pairs",
 	},
 	{
 		"echasnovski/mini.surround",
-    lazy = false,
+		lazy = false,
 		version = false,
 		config = surround,
 	},
