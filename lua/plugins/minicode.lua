@@ -26,4 +26,12 @@ return {
 		lazy = false,
 		config = comment,
 	},
+	{
+		"windwp/nvim-ts-autotag",
+		lazy = false,
+		config = {},
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
+	},
 }
