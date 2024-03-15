@@ -21,11 +21,11 @@ return {
 		cmd = "Mason",
 		event = "BufReadPre",
 		config = lspfunction,
-		{
-			"williamboman/mason-lspconfig.nvim",
-			opts = opts,
-			event = "BufReadPre",
-			dependencies = "williamboman/mason.nvim",
-		},
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		opts = opts,
+		event = "BufReadPre",
+		dependencies = "williamboman/mason.nvim",
 	},
 }
