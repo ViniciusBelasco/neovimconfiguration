@@ -1,11 +1,8 @@
 local config = function()
 	require("nvim-treesitter.configs").setup({
-		indent = {
-			enable = true,
-		},
-		autotag = {
-			enable = true,
-		},
+    build = ":TSUpdate",
+		indent = { enable = true, },
+		autotag = { enable = true, },
 		ensure_installed = {
 			"markdown",
 			"markdown_inline",

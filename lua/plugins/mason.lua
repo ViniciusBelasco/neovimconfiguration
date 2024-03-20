@@ -1,7 +1,9 @@
-local opts = {
-	ensure_installed = { "efm", "lua_ls" },
-	automatic_installation = true,
-}
+local config = function ()
+  require("mason-lspconfig").setup({
+    ensure_installed = { "lua_ls", "tsserver" },
+    automatic_installation = true,
+  })
+end
 
 local lspfunction = function()
 	require("mason").setup({
@@ -24,7 +26,7 @@ return {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-		opts = opts,
+		config = config,
 		event = "BufReadPre",
 		dependencies = "williamboman/mason.nvim",
 	},
