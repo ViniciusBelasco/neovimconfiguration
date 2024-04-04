@@ -116,9 +116,9 @@ local snippets = {
 				i(1, "ALIAS"),
 				i(2, "field"),
 				i(3, "value"),
-				i(4, "ALIAS"),
+				rep(1),
 				i(5, "TODO"),
-				i(6, "ALIAS"),
+				rep(1, "ALIAS"),
 			}
 		)
 	),
@@ -416,11 +416,26 @@ local snippets = {
 		"eval",
 		fmt(
 			[[
-    Eval( {{ | {} | {} }} )
-    ]],
+      Eval( {{ | {} | {} }} )
+      ]],
 			{
 				i(1, "bBlock"),
 				i(2, "execution"),
+			}
+		)
+	),
+
+	-- System Convertion do not commit
+	s(
+		"retl",
+		fmt(
+			[[
+      RetornaCodigoLivre( {}, {}, {} )
+      ]],
+			{
+				i(1, "@nFaixa"),
+				i(2, "cAlias"),
+				i(3, "nIndex"),
 			}
 		)
 	),
