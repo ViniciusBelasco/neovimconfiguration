@@ -23,10 +23,3 @@ sudo apt-get install ripgrep
 
 echo Installing gcc compilator
 sudo apt-get install gcc 
-
-#ToDo: set condition to install winyank only when -w parameter is passed.
-echo Installing yank program for wsl.
-curl -sLo/tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x64.zip
-unzip -p /tmp/win32yank.zip win32yank.exe > /tmp/win32yank.exe
-chmod +x /tmp/win32yank.exe
-sudo mv /tmp/win32yank.exe /usr/local/bin/

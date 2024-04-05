@@ -56,6 +56,6 @@ vim.g.clipboard = {
   paste = {['+'] = paste, ['*'] = paste},
 }
 
--- Now the '+' register will copy to system clipboard using OSC52
-vim.keymap.set({'n', 'v'}, 'y', '"+y')
-vim.keymap.set('n', 'yy', '"+yy')
+---- Now the '+' register will copy to system clipboard using OSC52
+--vim.keymap.set({'n', 'v'}, 'y', '"+y')
+--vim.keymap.set('n', 'yy', '"+yy')

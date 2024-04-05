@@ -13,6 +13,9 @@ return {
 					require('none-ls.diagnostics.flake8'),
 					null_ls.builtins.formatting.isort,
 					null_ls.builtins.formatting.black,
+          -- C
+        	require('none-ls.diagnostics.clangd'),
+          require('none-ls.formatting.cpplint'),
 				},
 			})
 
