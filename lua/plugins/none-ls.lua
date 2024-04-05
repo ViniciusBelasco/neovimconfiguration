@@ -14,8 +14,8 @@ return {
 					null_ls.builtins.formatting.isort,
 					null_ls.builtins.formatting.black,
           -- C
-        	require('none-ls.diagnostics.clangd'),
-          require('none-ls.formatting.cpplint'),
+          require('none-ls.diagnostics.cpplint'),
+          null_ls.builtins.formatting.clang_format
 				},
 			})
 
