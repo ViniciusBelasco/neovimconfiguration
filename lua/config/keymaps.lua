@@ -14,6 +14,9 @@ keymaps("n", "<C-Down>", ":resize -2" .. CR)
 keymaps("n", "<C-Right>", ":vertical resize -2" .. CR)
 keymaps("n", "<C-Left>", ":vertical resize +2" .. CR)
 
+-- Undo Tree
+keymaps("n","<leader>u", vim.cmd.UndotreeToggle)
+
 -- Show Full File-Path
 keymaps("n", "<leader>pa", ":echo expand('%:p')" .. CR) -- Show Full File Path
 
