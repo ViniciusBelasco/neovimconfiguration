@@ -3,6 +3,7 @@ local icons = require("util.icons").diagnostic_signs
 
 local config = function()
 	local lspconfig = require("lspconfig")
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
 	lspconfig.lua_ls.setup({
     on_attach = on_attach,
     			lua = { -- custom settings for lua
@@ -20,8 +21,8 @@ local config = function()
 			},
 
   })
-  lspconfig.tsserver.setup({})
-  lspconfig.pyright.setup({})
+  lspconfig.tsserver.setup({capabilities=capabilities})
+  lspconfig.pyright.setup({capabilities=capabilities})
 
 	for type, icon in pairs(icons) do
 		local hl = "DiagnosticSign" .. type
