@@ -64,6 +64,24 @@ local snippets = {
 		)
 	),
 	s(
+		"elseif",
+		fmt(
+			[[
+  if {}
+     {}
+  elseif {}
+     {}
+  endif
+]],
+			{
+				i(1, "condition1"),
+				i(2, "execution1"),
+				i(3, "condition2"),
+				i(4, "execution2"),
+			}
+		)
+	),
+	s(
 		"inc",
 		fmt(
 			[[
