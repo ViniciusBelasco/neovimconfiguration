@@ -1,6 +1,3 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 local function copy(lines, _)
   require('osc52').copy(table.concat(lines, '\n'))
 end
