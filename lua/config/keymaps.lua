@@ -119,3 +119,7 @@ end, {})
 keymaps("n", "<leader>fb", function()
 	telescope.buffers()
 end, {})
+
+-- Debugging
+keymaps('n', "<leader>dt", function() require("dap").toggle_breakpoint() end, {})
+keymaps('n', "<leader>dc", function() require("dap").continu() end, {})
