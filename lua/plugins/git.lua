@@ -3,31 +3,62 @@ return {
 		"tpope/vim-fugitive",
 		lazy = false,
 	},
-  {
-    "lewis6991/gitsigns.nvim",
-    lazy = false,
+	{
+		"lewis6991/gitsigns.nvim",
+		lazy = false,
 		config = function()
 			require("gitsigns").setup({})
 		end,
-    opts = {
-      signs = {
-        add = { text = "▎" },
-        change = { text = "▎" },
-        delete = { text = "" },
-        topdelete = { text = "" },
-        changedelete = { text = "▎" },
-        untracked = { text = "▎" },
-      },
-    },
-    on_attach = function(buffer)
-      local gs = package.loaded.gitsigns
+		opts = {
+			signs = {
+				add = { text = "▎" },
+				change = { text = "▎" },
+				delete = { text = "" },
+				topdelete = { text = "" },
+				changedelete = { text = "▎" },
+				untracked = { text = "▎" },
+			},
+		},
+		signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+		numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
+		linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
+		word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
+		watch_gitdir = {
+			follow_files = true,
+		},
+		auto_attach = true,
+		attach_to_untracked = false,
+		current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+		current_line_blame_opts = {
+			virt_text = true,
+			virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+			delay = 1000,
+			ignore_whitespace = false,
+			virt_text_priority = 100,
+		},
 
-      local function map(mode, lhs, rhs, desc)
-        vim.keymap.set(mode, lhs, rhs, { buffer = buffer, desc = desc })
-      end
+		sign_priority = 6,
+		update_debounce = 100,
+		status_formatter = nil, -- Use default
+		max_file_length = 40000, -- Disable if file is longer than this (in lines)
+		preview_config = {
+			-- Options passed to nvim_open_win
+			border = "single",
+			style = "minimal",
+			relative = "cursor",
+			row = 0,
+			col = 1,
+		},
 
-      map("n", "]h", gs.next_hunk, "Next Hunk")
-      map("n", "[h", gs.prev_hunk, "Prev Hunk")
-    end,
-  },
+		on_attach = function(buffer)
+			local gs = package.loaded.gitsigns
+
+			local function map(mode, lhs, rhs, desc)
+				vim.keymap.set(mode, lhs, rhs, { buffer = buffer, desc = desc })
+			end
+
+			map("n", "]h", gs.next_hunk, "Next Hunk")
+			map("n", "[h", gs.prev_hunk, "Prev Hunk")
+		end,
+	},
 }
