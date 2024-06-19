@@ -57,8 +57,23 @@ return {
 				vim.keymap.set(mode, lhs, rhs, { buffer = buffer, desc = desc })
 			end
 
-			map("n", "]h", gs.next_hunk, "Next Hunk")
-			map("n", "[h", gs.prev_hunk, "Prev Hunk")
+			-- Navigation
+			map("n", "]h", function()
+				if vim.wo.diff then
+					vim.cmd.normal({ "]c", bang = true })
+				else
+					gs.nav_hunk("next")
+				end
+			end, "Go to next hunk in diff mode")
+
+			map("n", "[h", function()
+				if vim.wo.diff then
+					vim.cmd.normal({ "[c", bang = true })
+				else
+					gs.nav_hunk("prev")
+				end
+			end, "Go to prev hunk in diff mode")
+
 		end,
 	},
 }
