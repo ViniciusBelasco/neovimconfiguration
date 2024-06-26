@@ -37,6 +37,5 @@ return {
 	dependencies = {
 		"windwp/nvim-autopairs",
 		"williamboman/mason.nvim",
-		"creativenull/efmls-configs-nvim",
 	},
 }

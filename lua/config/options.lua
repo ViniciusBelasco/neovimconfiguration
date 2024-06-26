@@ -1,9 +1,9 @@
 local opt = vim.opt
 
 -- Tab / Indetation
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.softtabstop = 2
+opt.tabstop = 3
+opt.shiftwidth = 3
+opt.softtabstop = 3
 opt.expandtab = true
 opt.smartindent = true
 opt.wrap = false
@@ -29,7 +29,7 @@ opt.hidden = true
 opt.errorbells = false
 opt.swapfile = false
 opt.backup = false
-opt.undodir = vim.fn.expand("~/.vim/undodir")
+opt.undodir = vim.fn.expand("~/.config/nvim/tmp")
 opt.undofile = true
 opt.backspace = "indent,eol,start"
 opt.splitright = true
