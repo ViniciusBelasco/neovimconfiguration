@@ -10,7 +10,12 @@ return {
 		"lukas-reineke/indent-blankline.nvim",
 		lazy = false,
 		main = "ibl",
-		opts = {},
+      config = function()
+         require("ibl").setup({
+         indent = { char = "|" },
+         whitespace = { highlight = { "Whitespace", 'NonText' }}
+         })
+      end
 	},
 	{
 		"folke/trouble.nvim",
@@ -67,15 +72,15 @@ return {
 		lazy = false,
 	},
    {
-      "catppuccin/nvim",
+		"folke/tokyonight.nvim",
 		lazy = false,
 		priority = 1000,
 		opts = {},
 		config = function()
-         vim.cmd("colorscheme catppuccin-mocha")
+         vim.cmd("colorscheme tokyonight-night")
 		end,
 	},
    {
-		"folke/tokyonight.nvim",
+      "catppuccin/nvim",
    },
 }

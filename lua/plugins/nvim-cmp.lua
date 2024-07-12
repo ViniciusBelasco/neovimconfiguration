@@ -21,7 +21,7 @@ return {
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.abort(),
-				["<CR>"] = cmp.mapping.confirm({ select = false }),
+				["<CR>"] = cmp.mapping.confirm({ select = true }),
 			}),
 			-- Sources for autocompletion
 			sources = cmp.config.sources({
@@ -33,11 +33,19 @@ return {
 			}),
 			-- Configure LspKind for vs-code like icons
 			formatting = {
+				fields = { "kind", "abbr", "menu" },
 				format = lspkind.cmp_format({
 					maxwidth = 50,
 					ellipsis_char = "...",
 				}),
 			},
+			-- For cmdLine inside buffer
+		})
+
+		cmp.setup.cmdline({
+			{ "/", "?" },
+			mapping = cmp.mapping.preset.cmdline(),
+			sources = { { name = "buffer" } },
 		})
 	end,
 
