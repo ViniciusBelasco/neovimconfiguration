@@ -10,12 +10,12 @@ return {
 		"lukas-reineke/indent-blankline.nvim",
 		lazy = false,
 		main = "ibl",
-      config = function()
-         require("ibl").setup({
-         indent = { char = "|" },
-         whitespace = { highlight = { "Whitespace", 'NonText' }}
-         })
-      end
+		config = function()
+			require("ibl").setup({
+				indent = { char = "|" },
+				whitespace = { highlight = { "Whitespace", "NonText" } },
+			})
+		end,
 	},
 	{
 		"folke/trouble.nvim",
@@ -52,8 +52,7 @@ return {
 		lazy = false,
 		version = "*",
 		config = function()
-			require("toggleterm").setup()
-
+			require("toggleterm").setup({})
 			function Set_terminal_keymaps()
 				local opts = { buffer = 0 }
 				vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
@@ -71,16 +70,17 @@ return {
 		"mbbill/undotree",
 		lazy = false,
 	},
-   {
+	{
 		"folke/tokyonight.nvim",
 		lazy = false,
 		priority = 1000,
 		opts = {},
 		config = function()
-         vim.cmd("colorscheme tokyonight-night")
+			vim.cmd("colorscheme tokyonight-night")
 		end,
 	},
-   {
-      "catppuccin/nvim",
-   },
+	{
+		"catppuccin/nvim",
+      lazy = false,
+	},
 }

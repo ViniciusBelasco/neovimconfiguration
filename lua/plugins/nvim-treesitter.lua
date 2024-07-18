@@ -31,7 +31,13 @@ local config = function()
 end
 
 return {
-	"nvim-treesitter/nvim-treesitter",
-	lazy = false,
-	opts = config,
+	{
+		"nvim-treesitter/nvim-treesitter",
+		lazy = false,
+		opts = config,
+	},
+	{
+		"nvim-treesitter/playground",
+		lazy = false,
+	},
 }

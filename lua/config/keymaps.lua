@@ -7,6 +7,9 @@ local telescope = require("telescope.builtin")
 keymaps("n", "<leader>tf", ":NvimTreeFocus" .. CR, { noremap = true, silent = true })
 keymaps("n", "<leader>tt", ":NvimTreeToggle" .. CR, { noremap = true, silent = true })
 
+-- ToggleTerm
+keymaps("n", "<leader>tm", ":ToggleTerm direction=horizontal" .. CR, {})
+
 -- Window Management
 keymaps("n", "<leader>sv", ":vsplit" .. CR) -- Vertical Split
 keymaps("n", "<leader>sh", ":split" .. CR) -- Horizontal Split
@@ -121,5 +124,9 @@ keymaps("n", "<leader>fb", function()
 end, {})
 
 -- Debugging
-keymaps('n', "<leader>dt", function() require("dap").toggle_breakpoint() end, {})
-keymaps('n', "<leader>dc", function() require("dap").continu() end, {})
+keymaps("n", "<leader>dt", function()
+	require("dap").toggle_breakpoint()
+end, {})
+keymaps("n", "<leader>dc", function()
+	require("dap").continu()
+end, {})
