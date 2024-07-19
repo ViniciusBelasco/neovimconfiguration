@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.g.mapleader = "\\"
+vim.g.maplocalleader = "\\"
 
 -- Example using a list of specs with the default options
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
