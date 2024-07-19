@@ -30,6 +30,7 @@ keymaps("n", "<leader>sm", ":MaximizerToggle" .. CR) -- Toggle Minimiza
 -- Save files
 keymaps("n", "<leader>w", ":w" .. CR) -- save
 keymaps("n", "<leader>q", ":q" .. CR) -- quit
+keymaps("n", "<leader>zz", ":wq" .. CR) -- save and quit
 
 -- Source lua files
 keymaps("n", "<leader><leader>", ":so" .. CR) -- source file

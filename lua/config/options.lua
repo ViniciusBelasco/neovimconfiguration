@@ -1,8 +1,5 @@
 local opt = vim.opt
 
-vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
-vim.g.maplocalleader = " "
-
 -- Tab / Indetation
 opt.tabstop = 3
 opt.shiftwidth = 3
