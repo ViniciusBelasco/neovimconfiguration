@@ -125,6 +125,17 @@ vim.filetype.add({
 	},
 })
 
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = augroup("bigfile"),
+  pattern = "bigfile",
+  callback = function(ev)
+    vim.b.minianimate_disable = true
+    vim.schedule(function()
+      vim.bo[ev.buf].syntax = vim.filetype.match({ buf = ev.buf }) or ""
+    end)
+  end,
+})
+
 -- Format on Save
 local lsp_fmt_group = vim.api.nvim_create_augroup("LspFormattingsGroup", {})
 vim.api.nvim_create_autocmd("BufWritePost", {
