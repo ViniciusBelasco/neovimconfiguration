@@ -27,11 +27,9 @@ return {
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
 		config = uiconfig,
-		lazy = false,
 	},
 	{
 		"nvim-telescope/telescope.nvim",
-		lazy = false,
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = config,
 	},

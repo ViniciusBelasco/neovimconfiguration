@@ -4,11 +4,9 @@ return {
 	-- },
 	{
 		"nvim-tree/nvim-web-devicons",
-		lazy = false,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		lazy = false,
 		main = "ibl",
 		config = function()
 			require("ibl").setup({
@@ -19,7 +17,6 @@ return {
 	},
 	{
 		"folke/trouble.nvim",
-		lazy = false,
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {
 			-- your configuration comes here
@@ -29,27 +26,23 @@ return {
 	},
 	{
 		"folke/lsp-colors.nvim",
-		lazy = false,
 		config = function()
 			require("lsp-colors").setup()
 		end,
 	},
 	{
 		"nvim-tree/nvim-tree.lua",
-		lazy = false,
 		opts = {},
 	},
 	--Yank and paste
 	{
 		"ojroques/nvim-osc52",
-		lazy = false,
 		config = function()
 			require("osc52").setup({})
 		end,
 	},
 	{
 		"akinsho/toggleterm.nvim",
-		lazy = false,
 		version = "*",
 		config = function()
 			require("toggleterm").setup({})
@@ -68,11 +61,9 @@ return {
 	},
 	{
 		"mbbill/undotree",
-		lazy = false,
 	},
 	{
 		"folke/tokyonight.nvim",
-		lazy = false,
 		priority = 1000,
 		opts = {},
 		config = function()
@@ -81,6 +72,5 @@ return {
 	},
 	{
 		"catppuccin/nvim",
-      lazy = false,
 	},
 }

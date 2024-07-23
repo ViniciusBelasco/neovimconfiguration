@@ -51,6 +51,5 @@ end
 
 return {
 	"nvim-lualine/lualine.nvim",
-	lazy = false,
 	config = config,
 }
