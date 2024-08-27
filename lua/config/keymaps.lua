@@ -1,7 +1,6 @@
 local CR = "<CR>"
 local keymaps = vim.keymap.set
 local api = vim.api.nvim_set_keymap
-local telescope = require("telescope.builtin")
 
 -- Directory Navigation
 keymaps("n", "<leader>tf", ":NvimTreeFocus" .. CR, { noremap = true, silent = true })
@@ -52,10 +51,10 @@ keymaps("n", "J", "mzJ`z")
 keymaps("n", "<leader>all", ":keepjumps normal! ggVG" .. CR, {})
 
 -- Pane Navigation
-keymaps("n", "<C-h>", "<C-w>h", {}) -- Navigate Left
-keymaps("n", "<C-j>", "<C-w>j", {}) -- Navigate Down
-keymaps("n", "<C-k>", "<C-w>k", {}) -- Navigate UP
-keymaps("n", "<C-l>", "<C-w>l", {}) -- Navigate Right
+keymaps("n", "<c-h>", ":wincmd h<CR>", {}) -- Navigate Left
+keymaps("n", "<c-j>", ":wincmd j<CR>", {}) -- Navigate Down
+keymaps("n", "<c-k>", ":wincmd k<CR>", {}) -- Navigate UP
+keymaps("n", "<c-l>", ":wincmd l<CR>", {}) -- Navigate Right
 
 -- Git keymaps
 keymaps("n", "<leader>gc", ":Git" .. CR .. "<C-w>r", {})
@@ -103,26 +102,6 @@ end)
 keymaps("n", "gR", function()
 	require("trouble").toggle("lsp_references")
 end)
-
--- Telescope
-keymaps("n", "<leader>fk", function()
-	telescope.keymaps()
-end, {})
-keymaps("n", "<leader>fh", function()
-	telescope.help_tags()
-end, {})
-keymaps("n", "<leader>ff", function()
-	telescope.find_files()
-end, {})
-keymaps("n", "<leader>fa", function()
-	telescope.builtin()
-end, {})
-keymaps("n", "<leader>fg", function()
-	telescope.live_grep()
-end, {})
-keymaps("n", "<leader>fb", function()
-	telescope.buffers()
-end, {})
 
 -- Debugging
 keymaps("n", "<leader>dt", function()
