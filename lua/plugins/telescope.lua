@@ -20,9 +20,11 @@ local config = function()
                vim.keymap.set("n", "<leader>fa", function()
                   builtinTc.builtin()
                end, {}),
-               vim.keymap.set("n", "<leader>fg", function()
-                  builtinTc.live_grep()
-               end, {}),
+               vim.keymap.set(
+                  "n",
+                  "<leader>fg",
+                  ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>"
+               ),
                vim.keymap.set("n", "<leader>fb", function()
                   builtinTc.buffers()
                end, {}),
@@ -30,6 +32,7 @@ local config = function()
          },
       },
    })
+   telescope.load_extension("live_grep_args")
 end
 
 local uiconfig = function()
@@ -50,7 +53,10 @@ return {
    },
    {
       "nvim-telescope/telescope.nvim",
-      dependencies = { "nvim-lua/plenary.nvim" },
+      dependencies = {
+         "nvim-lua/plenary.nvim",
+         "nvim-telescope/telescope-live-grep-args.nvim",
+      },
       opts = config,
    },
 }

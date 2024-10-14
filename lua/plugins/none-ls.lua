@@ -17,7 +17,8 @@ return {
                null_ls.builtins.formatting.clang_format,
                -- Html, css, JS
                null_ls.builtins.formatting.prettier,
-               null_ls.builtins.diagnostics.erb_lint
+               null_ls.builtins.diagnostics.erb_lint,
+               null_ls.builtins.diagnostics.stylelint,
             },
          })
 
