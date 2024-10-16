@@ -1,43 +1,55 @@
-local config = function()
-	require("nvim-treesitter.configs").setup({
-		build = ":TSUpdate",
-		indent = { enable = true },
-		autotag = function()
-         require('nvim-ts-autotag').setup()
-      end,
-		ensure_installed = {
-			"markdown",
-			"markdown_inline",
-			"json",
-			"javascript",
-			"typescript",
-			"yaml",
-			"html",
-			"css",
-			"bash",
-			"lua",
-			"dockerfile",
-			"solidity",
-			"gitignore",
-			"python",
-			"vue",
-			"c",
-			"cpp",
-		},
-		auto_install = true,
-		highlight = {
-			enable = true,
-			additional_vim_regex_highlighting = true,
-		},
-	})
-end
-
+-- Code Tree Support / Syntax Highlighting
 return {
-	{
-		"nvim-treesitter/nvim-treesitter",
-		opts = config,
-	},
-	{
-		"nvim-treesitter/playground",
-	},
+   {
+      "nvim-treesitter/nvim-treesitter",
+      lazy = false;
+      event = "VeryLazy",
+      dependencies = {
+         "nvim-treesitter/nvim-treesitter-textobjects",
+      },
+      build = ":TSUpdate",
+      opts = {
+         highlight = {
+            enable = true,
+            additional_vim_regex_highlighting = true,
+         },
+         indent = { enable = true },
+         auto_install = true, -- automatically install syntax support when entering new file type buffer
+         ensure_installed = {
+            "bash",
+            "c",
+            "c_sharp",
+            "cpp",
+            "css",
+            "diff",
+            "dockerfile",
+            "git_rebase",
+            "gitcommit",
+            "gitignore",
+            "html",
+            "java",
+            "javascript",
+            "json",
+            "lua",
+            "markdown",
+            "markdown_inline",
+            "python",
+            "solidity",
+            "tmux",
+            "typescript",
+            "vim",
+            "vimdoc",
+            "vue",
+            "xml",
+            "yaml",
+         },
+      },
+      config = function(_, opts)
+         local configs = require("nvim-treesitter.configs")
+         configs.setup(opts)
+      end,
+   },
+   {
+      "nvim-treesitter/playground",
+   },
 }
