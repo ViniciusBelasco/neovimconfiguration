@@ -64,13 +64,11 @@ keymaps("n", "<leader>gb", ":Git blame" .. CR, {})
 api("n", "<C-_>", "gcc", { noremap = false })
 api("v", "<C-_>", "gcc", { noremap = false })
 
--- Vine finder
---Search on current word filtering by current file extension
-api("n", "<C-f>", ":Vine" .. CR, {})
-api("n", "<leader>f", ":call VineSeek('', '.')", {})
-
---Open current shown match
-api("n", "<leader>" .. CR, ":call VineOpen()" .. CR, {})
+-- tmux pane Navigation
+keymaps("n", "<C-h>", ":TmuxNavigateLeft<CR>") -- Navigate Left
+keymaps("n", "<C-j>", ":TmuxNavigateDown<CR>") -- Navigate Down
+keymaps("n", "<C-k>", ":TmuxNavigateUp<CR>") -- Navigate UP
+keymaps("n", "<C-l>", ":TmuxNavigateRight<CR>") -- Navigate Right
 
 -- LuaSnip configuration
 -- This expand the current item or jump to the next item within the snippet
